@@ -1,0 +1,47 @@
+.Container {
+    padding: 1rem;
+    background-color: $background-secondary;
+    border-radius: $radius;
+    margin-top: 1rem;
+
+    .Header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        user-select: none;
+
+        .Title {
+            color: $border-input;
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+
+        .Actions {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+
+            .Action {
+                padding: 0.25rem 0.5rem;
+                font-weight: bold;
+                background-color: transparent;
+                color: $border-input;
+
+                &:hover {
+                    color: $text-primary;
+                }
+
+                &[data-active='true'] {
+                    color: $highlight;
+                }
+            }
+        }
+    }
+
+    .Content {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 0.5rem;
+        margin-top: 1rem;
+    }
+}

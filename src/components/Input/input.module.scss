@@ -1,0 +1,197 @@
+.Input {
+    position: relative;
+    margin: 1rem 0;
+    --component-color: $text-primary;
+
+    .Label {
+        font-family: var(--font-poppins);
+        font-weight: bold;
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        color: $text-secondary;
+    }
+
+    .Top,
+    .Bottom {
+        position: absolute;
+        left: 0.5rem;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .Top {
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .Bottom {
+        bottom: -50%;
+        transform: translateY(-75%);
+    }
+
+    .Top ~ .Container .InputElement::placeholder,
+    .Bottom ~ .Container .InputElement::placeholder {
+        color: transparent;
+    }
+
+    &:focus-within .Container .InputElement::placeholder,
+    &:hover .Container .InputElement::placeholder {
+        color: $component-hover;
+    }
+
+    &:focus-within .Top,
+    &:hover .Top,
+    &[aria-current='true'] .Top {
+        transform: translateY(-125%) translateX(-0.5rem);
+    }
+
+    &:focus-within .Bottom,
+    &:hover .Bottom,
+    &[aria-current='true'] .Bottom {
+        transform: translateY(0%) translateX(-0.5rem);
+    }
+
+    .Container {
+        position: relative;
+        display: flex;
+        align-items: center;
+
+        .Icon {
+            margin-left: 0.5rem;
+            color: $text-secondary;
+
+            svg {
+                width: 1.5rem;
+                height: 1.5rem;
+            }
+        }
+
+        .InputElement {
+            width: 100%;
+            border: none;
+            padding: 0.5rem;
+            background: transparent;
+            outline: none;
+            transition: all 0.3s ease-in-out;
+            color: $text-secondary;
+            font-family: var(--font-nunito), sans-serif;
+
+            &:hover,
+            &:focus {
+                color: $text-title;
+            }
+
+            &::placeholder {
+                transition: all 100ms ease-in-out;
+                color: $border-input-focused;
+            }
+
+            &:not(:placeholder-shown) {
+                .Top {
+                    transform: translateY(-125%) translateX(-0.5rem);
+                }
+            }
+        }
+
+        .InputElement:focus ~ .Track .Bar,
+        .InputElement:not(:placeholder-shown) ~ .Track .Bar {
+            width: 100%;
+        }
+
+        .Track {
+            width: 100%;
+            height: 3px;
+            background-color: $border-input;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            border-radius: $radius;
+            display: flex;
+            justify-content: center;
+
+            .Bar {
+                content: ' ';
+                display: block;
+                width: 0;
+                height: 3px;
+                background-color: $border-input-focused;
+                transition: width 0.2s ease-in-out;
+                border-radius: $radius;
+            }
+        }
+
+        textarea {
+            resize: none;
+            overflow: hidden;
+            max-height: 60vh;
+            max-width: 100%;
+            width: 100%;
+            height: 2rem;
+        }
+    }
+}
+
+.Line {
+    .Label {
+        margin-bottom: 3px;
+    }
+
+    .InputElement {
+        margin-bottom: 3px;
+    }
+}
+
+.Bordered {
+    border: 3px solid $border-input;
+    border-radius: $radius;
+    padding: 0.25rem;
+    transition: all 0.3s ease-in-out;
+
+    .Icon {
+        margin-right: 0.25rem;
+    }
+
+    .Label {
+        padding: 0 0.25rem;
+        border-radius: $radius;
+    }
+
+    .Top,
+    .Bottom {
+        left: 0.5rem;
+    }
+
+    .Top {
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .Bottom {
+        bottom: -50%;
+        transform: translateY(-100%);
+    }
+
+    &:focus-within .Top,
+    &:hover .Top,
+    &[aria-current='true'] .Top {
+        transform: translateY(-150%) translateX(-0.25rem);
+        background: $primary-dark;
+    }
+
+    &:focus-within .Bottom,
+    &:hover .Bottom,
+    &[aria-current='true'] .Bottom {
+        transform: translateY(-25%) translateX(-0.25rem);
+        background: $primary-dark;
+    }
+
+    &:focus-within,
+    &:hover,
+    &[aria-current='true'] {
+        border-color: $primary-dark;
+
+        .Label {
+            color: $text-primary;
+        }
+    }
+}

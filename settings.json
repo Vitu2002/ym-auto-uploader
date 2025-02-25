@@ -1,0 +1,4 @@
+{
+    "scss.validate": true,
+    "scss.includePaths": ["src/styles"]
+}

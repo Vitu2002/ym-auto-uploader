@@ -1,0 +1,96 @@
+.Container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 1rem;
+    background-color: $background-secondary;
+    border-radius: $radius;
+    gap: 1rem;
+
+    .Avatar {
+        width: 100px;
+        height: 100px;
+        background-color: $component;
+        border-radius: 50%;
+    }
+
+    .Metadata {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-around;
+        gap: 0.25rem;
+        margin-right: auto;
+
+        .Name {
+            display: flex;
+            align-items: center;
+
+            .Username {
+                margin-right: 0.5rem;
+                font-size: 1.25rem;
+                font-weight: bold;
+                color: $text-title;
+            }
+
+            .DisplayName {
+                font-size: 1rem;
+                color: $text-secondary;
+            }
+
+            .Logout {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                margin-left: 1rem;
+                color: $border-input;
+                background-color: transparent !important;
+
+                &:hover {
+                    color: $danger;
+                }
+            }
+        }
+
+        .Role {
+            font-size: 1.15rem;
+            color: $text-title;
+        }
+    }
+
+    .Actions {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 0.5rem;
+
+        .Action {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            padding: 0.25rem 0.5rem;
+            font-weight: bold;
+
+            &:hover {
+                &[data-action='logout'] {
+                    background-color: $error;
+                }
+
+                &[data-action='clear-cache'] {
+                    background-color: $danger;
+                }
+
+                &[data-action='pause'] {
+                    background-color: $highlight;
+                    color: $border-input;
+                }
+
+                &[data-action='play'] {
+                    background-color: $success;
+                }
+            }
+        }
+    }
+}

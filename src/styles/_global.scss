@@ -1,0 +1,161 @@
+// Importando as cores definidas
+@use 'sass:color';
+@use 'sass:math';
+
+// Normalização dos estilos globais
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    background-color: $background;
+    color: $text-primary;
+}
+
+// Definindo a largura máxima do site para uma boa responsividade
+#root {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+// Estilos para o corpo da página
+body {
+    background-color: $background;
+    color: $text-primary;
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+// Links globais
+a {
+    color: $primary;
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover {
+        color: $highlight;
+    }
+}
+
+// Estilos de Containers e Layout
+section,
+header,
+footer {
+    padding: 20px;
+    margin: 20px 0;
+}
+
+header {
+    background-color: $primary;
+    padding: 15px 0;
+    text-align: center;
+    color: white;
+}
+
+footer {
+    background-color: #222222;
+    color: $text-primary;
+    padding: 15px;
+    text-align: center;
+}
+
+// Definindo botões globais
+button {
+    background-color: $component;
+    color: $text-secondary;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease-in;
+    outline: none;
+
+    &:hover {
+        color: $text-title;
+        background-color: $component-hover;
+    }
+}
+
+// Utilizando mixin para bordas arredondadas
+@mixin border-radius($radius) {
+    border-radius: $radius;
+}
+
+// Media queries para responsividade
+$small: 768px;
+$medium: 1024px;
+
+@media (max-width: $small) {
+    body {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: $medium) {
+    body {
+        font-size: 15px;
+    }
+}
+
+// Definindo o estilo de Inputs
+input,
+textarea {
+    background-color: #333333;
+    color: $text-primary;
+    border: 1px solid #444;
+    padding: 10px;
+    width: 100%;
+    font-size: 1rem;
+    border-radius: 5px;
+
+    &:focus {
+        outline: none;
+        border-color: $primary;
+    }
+}
+
+// Estilos de Cards e Caixas
+.card {
+    background-color: #1e1e1e;
+    color: $text-primary;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 15px 0;
+}
+
+// Definindo animações básicas
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-out;
+}
+
+// Outros ajustes para otimização de performance
+img {
+    max-width: 100%;
+    height: auto;
+    border: none;
+    
+}

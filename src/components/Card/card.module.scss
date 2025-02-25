@@ -1,0 +1,42 @@
+.Card {
+    display: flex;
+    align-items: center;
+    cursor: default;
+    width: 100%;
+    transition: all 0.3s ease-in-out;
+    padding: 0.5rem;
+    border-radius: $radius;
+
+    .Label {
+        display: flex;
+        align-items: center;
+        font-size: 0.9rem;
+        font-weight: lighter;
+        margin-right: 0.5rem;
+        color: $text-secondary;
+        transition: all 0.3s ease-in-out;
+
+        svg {
+            margin-right: 0.25rem;
+        }
+    }
+
+    .Value {
+        font-size: 1rem;
+        font-weight: bold;
+        color: $text-primary;
+        transition: all 0.3s ease-in-out;
+    }
+
+    &:hover {
+        background-color: $component;
+
+        .Label {
+            color: $text-title;
+        }
+
+        .Value {
+            color: $highlight;
+        }
+    }
+}

@@ -1,0 +1,28 @@
+.Container {
+    padding: 1rem 0;
+    background-color: $background-secondary;
+    border-radius: $radius;
+    margin-top: 1rem;
+
+    .Header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        user-select: none;
+        padding: 0 1rem;
+
+        .Title {
+            color: $border-input;
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+    }
+
+    .Content {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 0.5rem;
+        margin-top: 1rem;
+        padding: 0 1rem;
+    }
+}

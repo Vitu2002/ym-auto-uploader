@@ -1,0 +1,45 @@
+@use 'sass:color';
+
+// Cores principais
+$background: #121212;
+$primary: #3577ff;
+$secondary: #33a8ff;
+$highlight: #00ff9d;
+
+// Cores complementares
+$background-secondary: #1a1a1a;
+$container: #1f1f1f;
+$component: #333333;
+$component-hover: #444444;
+
+// Variações das cores
+$primary-dark: color.adjust($primary, $lightness: -10%);
+$primary-light: color.adjust($primary, $lightness: 10%);
+$secondary-dark: color.adjust($secondary, $lightness: -10%);
+$secondary-light: color.adjust($secondary, $lightness: 10%);
+$highlight-dark: color.adjust($highlight, $lightness: -10%);
+$highlight-light: color.adjust($highlight, $lightness: 10%);
+
+// Cores de texto
+$text-primary: #e0e0e0;
+$text-secondary: #b0b0b0;
+$text-title: #ffffff;
+
+// Cores para Interações
+$hover-button: color.adjust($primary, $lightness: 15%);
+$button-primary: $primary;
+$button-secondary: color.adjust($secondary, $lightness: -15%);
+
+// Cores de Contorno e Borda
+$border-input: #444444;
+$border-input-focused: $primary;
+
+// Cores de Suporte
+$error: #ff4f4f;
+$danger: #ee0909;
+$success: #4caf50;
+$warning: #ff9800;
+$info: #2196f3;
+
+// Outras variáveis
+$radius: 5px;
