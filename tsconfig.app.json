@@ -31,7 +31,8 @@
             "@utils/*": ["src/utils/*"],
             "@layouts/*": ["src/layouts/*"],
             "@providers/*": ["src/providers/*"],
-            "@assets/*": ["src/assets/*"]
+            "@assets/*": ["src/assets/*"],
+            "@type/*": ["src/types/*"]
         }
     },
     "include": ["src", "src/**/*", "src/**/*.ts", "src/**/*.tsx", "src/**/*.d.ts", "src/**/*.scss"]
