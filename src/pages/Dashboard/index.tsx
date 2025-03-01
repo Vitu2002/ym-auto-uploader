@@ -7,17 +7,7 @@ export default function DashboardPage() {
     return (
         <main className={styles.Main}>
             <UserComponent />
-            <StatusComponent
-                title='Worker Status (Vitu)'
-                last_update='há 0 minutos'
-                bytes={0}
-                queued={0}
-                finished={0}
-                chapters={0}
-                chapters_error={0}
-                images={0}
-                images_error={0}
-            />
+            <StatusComponent />
             <CurrentComponent
                 title='Attack on Titan | ID: 74'
                 current={{
