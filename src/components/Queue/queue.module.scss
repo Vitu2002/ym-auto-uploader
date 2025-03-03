@@ -1,0 +1,50 @@
+.Container {
+    padding: 1rem;
+    background-color: $background-secondary;
+    border-radius: $radius;
+    margin-top: 1rem;
+
+    .Title {
+    }
+
+    .Button {
+        display: flex;
+        width: 100%;
+        padding: 2rem 1rem;
+        margin: 1rem 0;
+        background-color: transparent !important;
+        border: 3px dashed $border-input;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+
+        &:hover {
+            border: 3px solid $primary-light;
+        }
+    }
+
+    .Queue {
+        list-style: none;
+        gap: 1rem;
+
+        .NoData,
+        .Item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            border-radius: $radius;
+            border: 3px solid $border-input;
+        }
+
+        .NoData {
+            gap: 1rem;
+            padding: 2rem 1rem;
+            color: $error;
+        }
+
+        .Item {
+            justify-content: flex-start;
+        }
+    }
+}
