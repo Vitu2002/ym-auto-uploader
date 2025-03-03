@@ -1,8 +1,12 @@
 import dayjs from 'dayjs';
 import { createContext, useContext, useState } from 'react';
 
+import { useQuery } from '@tanstack/react-query';
+import getUser from '@utils/api/user';
 import 'dayjs/locale/pt-br';
 import RelativeTime from 'dayjs/plugin/relativeTime';
+import { useCookies } from 'react-cookie';
+import { toast } from 'react-toastify';
 dayjs.extend(RelativeTime);
 dayjs.locale('pt-br');
 
@@ -20,19 +24,47 @@ const initialWorker: WorkerData = {
 export const ContentProvider = ({ children }: { children: React.ReactNode }) => {
     const [status, setStatus] = useState<StatusType>('paused');
     const [worker, setWorker] = useState<WorkerData>(initialWorker);
-    const [user, setUser] = useState<UserEntity | null>(null);
+    const [queue, setQueue] = useState<QueueData>({ current: null, queue: [], finished: [] });
+    const [{ access_token }, setCookie] = useCookies(['access_token']);
+    const { data: user, refetch } = useQuery({
+        queryKey: ['user', `Bearer ${access_token}`],
+        queryFn: () =>
+            getUser(access_token).then(user => {
+                if (!user) {
+                    toast.error('Seu login expirou! Por favor, logue novamente.');
+                    logoff();
+                }
+                return user;
+            }),
+        enabled: !!access_token,
+    });
 
     const changeStatus = (status: StatusType) => setStatus(status);
-    const logoff = () => setUser(null);
+    const logoff = () => {
+        refetch();
+        setCookie('access_token', '', { path: '/' });
+        setStatus('paused');
+        window.location.href = '/';
+    };
     const changeWorkerFilter = (filter: WorkerFilter) =>
         setWorker(c => ({
             ...c,
             filter,
         }));
+    const refreshQueue = () => setQueue(c => ({ ...c }));
 
     return (
         <ContentContext.Provider
-            value={{ user, logoff, status, changeStatus, worker, changeWorkerFilter }}
+            value={{
+                user,
+                logoff,
+                status,
+                changeStatus,
+                worker,
+                changeWorkerFilter,
+                queue,
+                refreshQueue,
+            }}
         >
             {children}
         </ContentContext.Provider>
@@ -47,10 +79,12 @@ export const useContent = () => {
 };
 
 interface ContentContextType {
-    user: UserEntity | null;
+    user: UserEntity | undefined;
     logoff: () => void;
     status: StatusType;
     changeStatus: (status: StatusType) => void;
     worker: WorkerData;
     changeWorkerFilter: (filter: WorkerFilter) => void;
+    queue: QueueData;
+    refreshQueue: () => void;
 }

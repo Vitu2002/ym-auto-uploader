@@ -1,6 +1,7 @@
 import { useContent } from '@providers/ContentProvider';
 import { StatusTypeEnum } from '@type/Content.types';
 import { UserRolesEnum } from '@type/User.types';
+import { imageUrl } from '@utils/formater';
 import { LogOutIcon, PauseIcon, PlayIcon } from 'lucide-react';
 import styles from './user.module.scss';
 
@@ -9,7 +10,11 @@ export default function UserComponent() {
 
     return (
         <div className={styles.Container}>
-            <img src='https://github.com/Vitu2002.png' alt='Avatar' className={styles.Avatar} />
+            <img
+                src={user?.avatar ? imageUrl(user.avatar) : 'https://github.com/Vitu2002.png'}
+                alt='Avatar'
+                className={styles.Avatar}
+            />
             <div className={styles.Metadata}>
                 <div className={styles.Name}>
                     <h1 className={styles.Username}>{user?.username || 'yumu-san'}</h1>

@@ -1,32 +1,30 @@
 import CurrentComponent from '@components/Current';
+import QueueComponent from '@components/Queue';
 import StatusComponent from '@components/Status';
 import UserComponent from '@components/User';
+import { useContent } from '@providers/ContentProvider';
+import { imageUrl } from '@utils/formater';
 import styles from './dashboard.module.scss';
 
 export default function DashboardPage() {
+    const { user } = useContent();
+
     return (
         <main className={styles.Main}>
+            {user && (
+                <img
+                    src={imageUrl(user.banner || user.wallpaper)}
+                    alt='Banner'
+                    className={styles.Banner}
+                />
+            )}
+            <div className={styles.Content}>
             <UserComponent />
             <StatusComponent />
-            <CurrentComponent
-                title='Attack on Titan | ID: 74'
-                current={{
-                    chapter: 107,
-                    index: 106,
-                    bytes: 1294053,
-                    images_total: 34,
-                    images_success: 34,
-                    images_error: 0,
-                }}
-                bytes={4592854}
-                chapters_total={214}
-                chapters_success={106}
-                chapters_error={1}
-                images_total={1294583}
-                images_success={1294580}
-                images_error={3}
-                last_update='há 0 minutos'
-            />
+            <CurrentComponent />
+            <QueueComponent />
+
+            </div>
         </main>
     );
 }
