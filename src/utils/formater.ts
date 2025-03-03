@@ -17,3 +17,16 @@ export function formatBytes(bytes: number) {
     // Qualquer coisa acima de 1TB, possivelmente desnecessário para nossa aplicação
     return `${(bytes / 1099511627776).toFixed(1)} TB`;
 }
+
+export function imageUrl(url: string) {
+    const isAbsolute = url.startsWith('http://') || url.startsWith('https://');
+    if (isAbsolute) return url;
+    const url_split = url.split('://');
+    const prefix = url_split[0];
+    const path = url_split[1];
+    const parsers = ((import.meta.env.VITE_URL_PARSERS as string) || '').split(',');
+    const parser = parsers.find(parser => parser.startsWith(prefix));
+    if (!parser) return url;
+    const domain = parser.split(':')[1];
+    return `https://${domain}/${path}`;
+}
