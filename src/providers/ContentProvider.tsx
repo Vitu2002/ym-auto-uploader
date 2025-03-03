@@ -26,6 +26,7 @@ export const ContentProvider = ({ children }: { children: React.ReactNode }) => 
     const [worker, setWorker] = useState<WorkerData>(initialWorker);
     const [queue, setQueue] = useState<QueueData>({ current: null, queue: [], finished: [] });
     const [{ access_token }, setCookie] = useCookies(['access_token']);
+    const [isAddQueueOpen, setIsAddQueueOpen] = useState(false);
     const { data: user, refetch } = useQuery({
         queryKey: ['user', `Bearer ${access_token}`],
         queryFn: () =>
@@ -52,6 +53,8 @@ export const ContentProvider = ({ children }: { children: React.ReactNode }) => 
             filter,
         }));
     const refreshQueue = () => setQueue(c => ({ ...c }));
+    const closeAddQueue = () => setIsAddQueueOpen(false);
+    const openAddQueue = () => setIsAddQueueOpen(true);
 
     return (
         <ContentContext.Provider
@@ -64,6 +67,10 @@ export const ContentProvider = ({ children }: { children: React.ReactNode }) => 
                 changeWorkerFilter,
                 queue,
                 refreshQueue,
+                access_token,
+                closeAddQueue,
+                openAddQueue,
+                isAddQueueOpen,
             }}
         >
             {children}
@@ -87,4 +94,8 @@ interface ContentContextType {
     changeWorkerFilter: (filter: WorkerFilter) => void;
     queue: QueueData;
     refreshQueue: () => void;
+    access_token?: string;
+    closeAddQueue: () => void;
+    openAddQueue: () => void;
+    isAddQueueOpen: boolean;
 }

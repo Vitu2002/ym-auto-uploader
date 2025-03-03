@@ -63,3 +63,13 @@ interface UploadChapterStatsData {
     bytes: number;
     status: UploadStatus;
 }
+
+interface MangaEntity {
+    id: number;
+    title: string;
+    slug: string;
+    cover: string | null;
+    visible: boolean;
+    status: string;
+    type: string;
+}

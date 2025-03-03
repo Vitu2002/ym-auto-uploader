@@ -158,3 +158,29 @@ img {
     height: auto;
     border: none;
 }
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: $radius;
+}
+
+::-webkit-scrollbar-thumb {
+    background: $border-input;
+    border-radius: $radius;
+    border: 3px solid transparent;
+    transition: all 0.3s ease-in;
+    cursor: pointer;
+
+    &:hover {
+        background: $highlight;
+    }
+}
+
+::-webkit-scrollbar-button {
+    display: none;
+}

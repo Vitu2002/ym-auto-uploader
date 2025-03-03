@@ -3,12 +3,12 @@ import { BookDashedIcon, BookPlusIcon } from 'lucide-react';
 import styles from './queue.module.scss';
 
 export default function QueueComponent() {
-    const { queue } = useContent();
+    const { queue, openAddQueue } = useContent();
 
     return (
         <div className={styles.Container}>
             <h1 className={styles.Title}>Fila ({queue.queue.length})</h1>
-            <button className={styles.Button}>
+            <button className={styles.Button} onClick={openAddQueue}>
                 <BookPlusIcon />
                 Adicionar obra à fila
             </button>

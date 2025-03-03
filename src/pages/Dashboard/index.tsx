@@ -1,3 +1,4 @@
+import AddQueueComponent from '@components/AddQueue';
 import CurrentComponent from '@components/Current';
 import QueueComponent from '@components/Queue';
 import StatusComponent from '@components/Status';
@@ -7,7 +8,7 @@ import { imageUrl } from '@utils/formater';
 import styles from './dashboard.module.scss';
 
 export default function DashboardPage() {
-    const { user } = useContent();
+    const { user, isAddQueueOpen } = useContent();
 
     return (
         <main className={styles.Main}>
@@ -19,11 +20,11 @@ export default function DashboardPage() {
                 />
             )}
             <div className={styles.Content}>
-            <UserComponent />
-            <StatusComponent />
-            <CurrentComponent />
-            <QueueComponent />
-
+                <UserComponent />
+                <StatusComponent />
+                <CurrentComponent />
+                <QueueComponent />
+                {isAddQueueOpen && <AddQueueComponent />}
             </div>
         </main>
     );

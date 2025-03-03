@@ -1,0 +1,121 @@
+.Component {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    animation: Show 0.3s ease-in;
+    padding: 2rem;
+
+    .Container {
+        width: 100%;
+        max-width: 900px;
+        max-height: 90vh;
+        padding: 2rem;
+        border-radius: $radius;
+        background-color: $background-secondary;
+        overflow: auto;
+
+        .Header {
+            display: flex;
+            position: relative;
+            align-items: center;
+            user-select: none;
+
+            .Title {
+                color: $text-secondary;
+                font-weight: bold;
+                font-size: 1.5rem;
+            }
+
+            .Close {
+                position: absolute;
+                right: 0;
+                top: 0;
+                padding: 0.5rem;
+                color: $text-secondary;
+                display: flex;
+
+                &:hover {
+                    color: $text-primary;
+                    background-color: $danger;
+                }
+            }
+        }
+
+        .Content {
+            .Input {
+                margin-top: 1rem;
+            }
+
+            .List {
+                list-style: none;
+                gap: 1rem;
+
+                .Item {
+                    display: flex;
+                    padding: 1rem;
+                    border-radius: $radius;
+                    border: 3px solid $border-input;
+                    width: 100%;
+                    max-width: 100%;
+                    margin-bottom: 1rem;
+                    overflow: hidden;
+                    cursor: pointer;
+                    transition: all 0.3s ease-in-out;
+
+                    &[data-active='true'] {
+                        border-color: $highlight;
+
+                        &:hover {
+                            border-color: $error;
+                        }
+                    }
+
+                    &:hover {
+                        border-color: $text-primary;
+                        background-color: $component-hover;
+                    }
+
+                    .Cover {
+                        width: 70px;
+                        height: 100px;
+                        background-color: $component;
+                        border-radius: $radius;
+                    }
+
+                    .Manga {
+                        display: flex;
+                        flex-direction: column;
+                        margin-left: 1rem;
+                        overflow: hidden;
+
+                        .Title {
+                            font-weight: bold;
+                            color: $text-primary;
+                            font-size: 1.1rem;
+                            max-width: 100%;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                            overflow: hidden;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes Show {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
